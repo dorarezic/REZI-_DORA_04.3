@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <title>Prekidač i Žarulja</title>
+  <style>
+    .container { text-align: center; margin: 20px; }
+    img { width: 100px; height: auto; }
+    button { margin: 10px; padding: 10px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Prikaz prekidača i žarulje -->
+    <div>
+      <img id="prekidac" src="https://github.com/dorarezic/REZI-_DORA_04.3/blob/main/off-removebg-preview.png?raw=true" alt="Prekidač OFF">
+      <img id="zarulja" src="https://github.com/dorarezic/REZI-_DORA_04.3/blob/main/zarulja_off_2.png?raw=true" alt="Ugašena žarulja">
+    </div>
+    <button onclick="promijeniStanje()">Upali/Ugasi</button>
+  </div>
+
+  <script>
+    let stanje = false;
+
+    function promijeniStanje() {
+      stanje = !stanje;
+
+      // Mijenja slike ovisno o stanju
+      const prekidac = document.getElementById('prekidac');
+      const zarulja = document.getElementById('zarulja');
+
+      if (stanje) {
+        prekidac.src = "https://github.com/dorarezic/REZI-_DORA_04.3/blob/main/on-removebg-preview.png?raw=true";  
+        zarulja.src = "https://github.com/dorarezic/REZI-_DORA_04.3/blob/main/zarulja_on_2.png?raw=true"; 
+      } else {
+        prekidac.src = "https://github.com/dorarezic/REZI-_DORA_04.3/blob/main/off-removebg-preview.png?raw=true";          
+		zarulja.src = "https://github.com/dorarezic/REZI-_DORA_04.3/blob/main/zarulja_off_2.png?raw=true";  
+      }
+    }
+  </script>
+</body>
+</html>

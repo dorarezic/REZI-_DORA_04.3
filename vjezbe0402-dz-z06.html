@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <title>Zbrajanje Dva Broja</title>
+  <style>
+    input, button { margin: 5px; padding: 5px; }
+    .label { display: inline-block; width: 30px; }
+    .result { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h3>Zbrajanje Dva Broja</h3>
+  
+
+  <div>
+    <span class="label">X = </span>
+    <input id="x" type="text" placeholder="0"><br>
+
+    <span class="label">Y = </span>
+    <input id="y" type="text" placeholder="0"><br>
+
+    <button onclick="zbroji()">Zbroji</button>
+
+    <div class="result">
+      <span class="label">REZULTAT = </span>
+      <input id="rezultat" type="text" readonly>
+    </div>
+  </div>
+
+  <script>
+    function zbroji() {
+      const x = parseFloat(document.getElementById('x').value);
+      const y = parseFloat(document.getElementById('y').value);
+      if (!isNaN(x) && !isNaN(y)) {
+        const rezultat = x + y;
+        document.getElementById('rezultat').value = rezultat;
+      } else {
+        alert('Unesite ispravne brojeve!');
+      }
+    }
+  </script>
+</body>
+</html>

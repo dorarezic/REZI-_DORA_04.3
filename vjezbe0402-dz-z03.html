@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ocjena</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Unesite ocjenu (1 - 5):</h2>
+
+  <form onsubmit="provjeriOcjenu(event)">
+    <input type="text" id="ocjena" placeholder="Ocjena" />
+    <br />
+    <button type="submit">Pošalji</button>
+  </form>
+
+  <script>
+    function provjeriOcjenu(event) {
+      event.preventDefault(); // Sprječava ponovno učitavanje stranice
+
+      const ocjena = document.getElementById('ocjena').value.trim();
+      let poruka = "";
+
+      switch (ocjena) {
+        case "1":
+          poruka = "Nedovoljan";
+          break;
+        case "2":
+          poruka = "Dovoljan";
+          break;
+        case "3":
+          poruka = "Dobar";
+          break;
+        case "4":
+          poruka = "Vrlo dobar";
+          break;
+        case "5":
+          poruka = "Odličan";
+          break;
+        default:
+          poruka = "Unesite broj od 1 do 5!";
+      }
+
+      alert(poruka);
+    }
+  </script>
+
+</body>
+</html>

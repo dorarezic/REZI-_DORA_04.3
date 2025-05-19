@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+ <meta charset="UTF-8" />
+ <title>z01</title>
+</head>
+<body>
+ <script type="text/javascript">
+
+        function aritmetickaSredina(brojevi) {
+            const suma = brojevi.reduce((a, b) => a + b, 0);
+            return suma / brojevi.length;
+        }
+
+        function geometrijskaSredina(brojevi) {
+            const proizvod = brojevi.reduce((a, b) => a * b, 1);
+            return Math.pow(proizvod, 1 / brojevi.length);
+        }
+
+        const unos = prompt("Unesite prirodne brojeve odvojene zarezom (npr. 1, 4, 16):");
+
+        if (unos) {
+            const brojevi = unos
+                .split(",")
+                .map(b => parseInt(b.trim()))
+                .filter(b => Number.isInteger(b) && b > 0); 
+
+            if (brojevi.length > 0) {
+                const aritmSredina = aritmetickaSredina(brojevi);
+                const geomSredina = geometrijskaSredina(brojevi);
+
+                document.getElementById("rezultat").innerHTML = `
+                    Uneseni brojevi: ${brojevi.join(", ")}<br><br>
+                    Aritmetička sredina: <strong>${aritmSredina.toFixed(2)}</strong><br>
+                    Geometrijska sredina: <strong>${geomSredina.toFixed(2)}</strong>
+                `;
+            } else {
+                document.getElementById("rezultat").textContent = "Unos nije ispravan. Unesite samo prirodne brojeve.";
+            }
+        } else {
+            document.getElementById("rezultat").textContent = "Niste unijeli nijedan broj.";
+        }
+    
+ </script>
+</body>
+</html>

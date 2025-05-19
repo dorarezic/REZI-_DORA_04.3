@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <title>Izračunaj dob</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Unesite svoj datum rođenja</h2>
+
+  <form onsubmit="izracunajDob(event)">
+    <input type="date" id="datumRodjenja" required />
+    <br>
+    <button type="submit">Izračunaj</button>
+  </form>
+
+  <script>
+    function izracunajDob(event) {
+      event.preventDefault();
+
+      const datumRodjenja = document.getElementById('datumRodjenja').value;
+      if (!datumRodjenja) {
+        alert("Molimo unesite datum rođenja.");
+        return;
+      }
+
+      const danas = new Date();
+      const rodjenje = new Date(datumRodjenja);
+
+      let godine = danas.getFullYear() - rodjenje.getFullYear();
+
+      // Provjera je li korisnik već imao rođendan ove godine
+      const mjesecRazlika = danas.getMonth() - rodjenje.getMonth();
+      const danRazlika = danas.getDate() - rodjenje.getDate();
+      if (mjesecRazlika < 0 || (mjesecRazlika === 0 && danRazlika < 0)) {
+        godine--; // još nije imao rođendan ove godine
+      }
+
+      alert(`Imate ${godine} godina.`);
+    }
+  </script>
+
+</body>
+</html>

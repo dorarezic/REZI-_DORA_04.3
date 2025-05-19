@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dodavanje paragrafa</title>
+  <script type="text/javascript">
+    window.onload = function () {
+      const link = document.querySelector("p a"); // Prvi <a> unutar <p>
+      link.addEventListener("click", function (event) {
+        event.preventDefault(); // Spriječi skakanje stranice na vrh
+
+        // Kreiraj novi paragraf
+        const noviParagraf = document.createElement("p");
+        const tekst = document.createTextNode("Ovo je novi paragraf koji je dodan klikom.");
+        noviParagraf.appendChild(tekst);
+
+        // Pronađi referentni paragraf
+        const referenca = document.getElementById("thisLocation");
+
+        // Dodaj novi paragraf iza referentnog
+        referenca.parentNode.insertBefore(noviParagraf, referenca.nextSibling);
+      });
+    };
+  </script>
+</head>
+<body>
+
+  <p><a href="#">Kliknite ovdje da dodate novi paragraf tekst</a></p>
+  <p id="thisLocation">Novi paragrafi teksta će se pojaviti ispod</p>
+  <p>Ovo je default-ni prvi paragraf teksta</p>
+
+</body>
+</html>

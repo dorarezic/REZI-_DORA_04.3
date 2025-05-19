@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Kalkulator</title>
+  <style>
+    input, button { margin: 5px; padding: 5px; width: 50px; }
+    .row { margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <div>
+    <input id="operand1" type="text" placeholder="operand1"><br>
+    <input id="operand2" type="text" placeholder="operand2"><br>
+
+    <div class="row">
+      <button onclick="calculate('+')">+</button>
+      <button onclick="calculate('-')">-</button>
+      <button onclick="calculate('*')">*</button>
+      <button onclick="calculate('/')">/</button>
+    </div>
+
+    <div class="row">
+      <button onclick="calculate('sin')">sin</button>
+      <button onclick="calculate('cos')">cos</button>
+      <button onclick="calculate('tan')">tan</button>
+    </div>
+
+    <div class="row">
+      <button onclick="calculate('log')">log</button>
+      <button onclick="calculate('ln')">ln</button>
+      <button onclick="calculate('^2')">x²</button>
+    </div>
+
+    <div class="row">
+      <button onclick="calculate('^3')">x³</button>
+      <button onclick="calculate('^')">xⁿ</button>
+    </div>
+  </div>
+
+  <script>
+    function calculate(operation) {
+      const op1 = parseFloat(document.getElementById('operand1').value);
+      const op2 = parseFloat(document.getElementById('operand2').value);
+      let result;
+
+      switch(operation) {
+        case '+': result = op1 + op2; break;
+        case '-': result = op1 - op2; break;
+        case '*': result = op1 * op2; break;
+        case '/': result = op2 !== 0 ? op1 / op2 : 'Dijeljenje s nulom'; break;
+        case 'sin': result = Math.sin(op1); break;
+        case 'cos': result = Math.cos(op1); break;
+        case 'tan': result = Math.tan(op1); break;
+        case 'log': result = Math.log10(op1); break;
+        case 'ln': result = Math.log(op1); break;
+        case '^2': result = Math.pow(op1, 2); break;
+        case '^3': result = Math.pow(op1, 3); break;
+        case '^': result = Math.pow(op1, op2); break;
+        default: result = 'Nepoznata operacija';
+      }
+
+      alert('Rezultat: ' + result);
+    }
+  </script>
+</body>
+</html>
